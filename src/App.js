@@ -1,18 +1,33 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import AppBar from 'material-ui/AppBar';
+import Toolbar from 'material-ui/Toolbar';
+import Typography from 'material-ui/Typography';
 import './App.css';
+import Main from './components/Main/Main';
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+import purple from 'material-ui/colors/purple';
+import green from 'material-ui/colors/green';
+const theme = createMuiTheme({
+  palette: {
+    primary: green,
+    secondary: purple,
+  },
+});
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <MuiThemeProvider theme={theme}>
+        <AppBar position="static" color="primary">
+          <Toolbar>
+            <Typography type="title" color="default">
+              KWIZ Admin Panel
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <Main />
+      </MuiThemeProvider>
       </div>
     );
   }
